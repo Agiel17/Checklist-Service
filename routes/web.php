@@ -15,8 +15,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('/login', 'LoginController@login');
+$router->post('/register', 'LoginController@register');
+
 $router->group(['prefix' => 'api/v1/checklists/'], function ($router) {
-    $router->get('login/','UsersController@authenticate');
     // Template
     // List all checklists templates
     $router->get('templates', [
