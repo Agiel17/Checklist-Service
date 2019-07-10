@@ -10,14 +10,11 @@ class ItemTest extends TestCase
      *
      * @return void
      */
-    public function testShouldCreateItem()
+    public function testShouldGetListItem()
     {
-        // $factory = Factory::create();
+        // $checklist = factory(Checklist::class, 2)->create();
 
-        // $response = $this->json('POST', '/checklist/{checklist_id}/items');
-
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
-    }
+        $response = $this->json('GET', route('checklist.index', ['checklist_id', 1]));
+        $response->assertResponseStatus(200);
+    } 
 }
